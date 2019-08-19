@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'dashboard.apps.DashboardConfig',
     'account.apps.AccountConfig',
     'logs.apps.LogsConfig',
     'django.contrib.admin',
@@ -132,4 +133,4 @@ AUTH_USER_MODEL = 'account.User'
 LOGIN_URL = 'account.login'
 
 # login redirect url
-LOGIN_REDIRECT_URL 'dashboard.dashboard'
+LOGIN_REDIRECT_URL = 'dashboard.dashboard'
