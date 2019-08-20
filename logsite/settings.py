@@ -70,6 +70,18 @@ TEMPLATES = [
     },
 ]
 
+
+#custom
+
+# user model
+AUTH_USER_MODEL = 'account.User'
+
+# login url
+LOGIN_URL = 'account:login'
+
+# login redirect url
+LOGIN_REDIRECT_URL = 'dashboard:dashboard'
+
 WSGI_APPLICATION = 'logsite.wsgi.application'
 
 
@@ -124,13 +136,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-#custom
-
-# user model
-AUTH_USER_MODEL = 'account.User'
-
-# login url
-LOGIN_URL = 'account.login'
-
-# login redirect url
-LOGIN_REDIRECT_URL = 'dashboard.dashboard'
