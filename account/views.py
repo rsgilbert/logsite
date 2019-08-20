@@ -9,8 +9,9 @@ def register(request):
     if request.method == 'POST':
         username = request.POST['email']
         password = request.POST['password']
+
         User.objects.create_user(username=username, password=password)
-        return HttpResponseRedirect(reverse('login'))
+        return HttpResponseRedirect(reverse('account:login'))
     else:
         form = RegisterForm()
         return render(request, 'account/register.html', {'form': form})

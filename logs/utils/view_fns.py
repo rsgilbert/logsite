@@ -3,11 +3,11 @@ from datetime import date
 
 
 @decorators.login_required
-def user_logs(request):
+def get_user_logs(request):
     user = get_user(request)
     return user.log_set.all()
 
 
 @decorators.login_required
 def logs_of_the_day(request, day):
-    return user_logs(request).filter(date__date=date.today())
+    return get_user_logs(request).filter(date__date=date.today())

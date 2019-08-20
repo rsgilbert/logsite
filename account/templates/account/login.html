@@ -1,3 +1,11 @@
-{{
-    form
-}}
+{% comment %} {% if form.errors %} 
+    <p>Your username and password are incorrect</p>
+{% endif %} {% endcomment %}
+
+
+<form action="{% url 'account:login' %}" method="POST">
+{% csrf_token %}
+{{ form.username }}
+{{ form.password }}
+<input type="submit" value="LOGIN" >
+</form>
