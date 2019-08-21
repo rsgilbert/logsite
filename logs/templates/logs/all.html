@@ -1,7 +1,7 @@
 
 <div>
     {% for date in log_dates%}
-        <p><a href="{% url 'logs:log'  date %}"> {{ date }}<a></p>
+        <p><a href="{% url 'logs:day_logs'  date %}"> {{ date }}<a></p>
         
     {% endfor %}
 </div>
