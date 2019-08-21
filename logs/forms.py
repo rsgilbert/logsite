@@ -8,7 +8,3 @@ class PostForm(forms.Form):
 
 class DayPostForm(forms.Form):
     log = forms.CharField(max_length=1000)
-
-
-class DayDeleteForm(forms.Form):
-    log = forms.Hidden
