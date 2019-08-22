@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from .utils import view_fns
+from utils import view_fns
 from .forms import PostForm
 from . import forms
 from .models import Log
@@ -36,12 +36,14 @@ def day_logs(request, day):
 			Log.objects.create(user=request.user, date=view_fns.get_datetime(day), log=form.cleaned_data['log'])
 			return redirect('logs:day_logs', day=day)
 
-		elif request.POST['delete']:
-			log = get_object_or_404(Log, id=request.POST['delete'])
+# delete log
+		elif request.POST['delete_id']:
+			log = get_object_or_404(Log, id=request.POST['delete_id'])
 			log.delete()
 			return redirect('logs:day_logs', day=day)
 
 
-	logs = view_fns.logs_of_the_day(request=request, day=day)
-	form = forms.DayPostForm()
-	return render(request, 'logs/daylogs.html', {'logs': logs, 'form': form, 'day': day})
+	elif request.method == 'GET':
+		logs = view_fns.logs_of_the_day(request=request, day=day)
+		form = forms.DayPostForm()
+		return render(request, 'logs/daylogs.html', {'logs': logs, 'form': form, 'day': day})

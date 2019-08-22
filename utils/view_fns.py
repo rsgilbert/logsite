@@ -16,7 +16,10 @@ def get_datetime(day):
     return datetime.strptime(day, "%Y-%m-%d")
 
 def get_date(day):
-    return get_datetime(day).date()
+    try:
+        return get_datetime(day).date()
+    except TypeError:
+        return get_datetime(str(day)).date()
 
 def get_date_as_str(day):
     return str(get_date(day))

@@ -1,10 +1,10 @@
 {% for log in logs %}
-    <p> {{ log }} </p>
+    <p> {{ log.log }} </p>
 
     <form method="POST" action="{% url 'logs:day_logs' day %}">
         {% csrf_token %}
         <input type="submit" value="DELETE">
-        <input type="hidden" name="delete" value="{{ log.id }}">
+        <input type="hidden" name="delete_id" value="{{ log.id }}">
     </form>
 {% endfor %}
 
